@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Product Cards</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <style>
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .product-card .card-img-top {
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+
+        .product-card .card-body {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #e74c3c;
+            margin-bottom: 12px;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            gap: 8px;
+        }
+
+        .stars {
+            display: flex;
+            gap: 2px;
+        }
+
+        .star {
+            color: #ffd700;
+            font-size: 1rem;
+        }
+
+        .star.empty {
+            color: #ddd;
+        }
+
+        .star.half {
+            position: relative;
+            color: #ddd;
+        }
+
+        .star.half::before {
+            content: '\f005';
+            position: absolute;
+            left: 0;
+            color: #ffd700;
+            width: 50%;
+            overflow: hidden;
+        }
+
+        .rating-text {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            font-weight: 500;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .filter-bar {
+            background: white;
+            padding: 20px 0;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .filter-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            color: #2c3e50;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="filter-bar">
+            <div class="filter-section">
+                <div class="filter-group">
+                    <span class="filter-label"><i class="fas fa-sort"></i> Sort By:</span>
+                    <select id="sortSelect" class="form-control" style="width: auto; display: inline-block;">
+                        <option value="default">Default</option>
+                        <option value="name-asc">Name (A-Z)</option>
+                        <option value="name-desc">Name (Z-A)</option>
+                        <option value="price-asc">Price (Low to High)</option>
+                        <option value="price-desc">Price (High to Low)</option>
+                        <option value="rating-desc">Rating (High to Low)</option>
+                        <option value="rating-asc">Rating (Low to High)</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <span class="text-muted"><i class="fas fa-box"></i> 3 Products Found</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="img/product-73.jpg" class="card-img-top" alt="Product 1">
+                <div class="card-body">
+                    <h5 class="card-title">Soccer Ball</h5>
+                    <div class="product-price">
+                        <i class="fas fa-tag"></i> Rp 150.000
+                    </div>
+                    <p class="card-text">High quality soccer ball for professional play...</p>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <img src="img/product-74.jpg" class="card-img-top" alt="Product 2">
+                <div class="card-body">
+                    <h5 class="card-title">Basketball</h5>
+                    <div class="product-price">
+                        <i class="fas fa-tag"></i> Rp 200.000
+                    </div>
+                    <p class="card-text">Professional basketball with excellent grip...</p>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <img src="img/product-75.jpg" class="card-img-top" alt="Product 3">
+                <div class="card-body">
+                    <h5 class="card-title">Tennis Racket</h5>
+                    <div class="product-price">
+                        <i class="fas fa-tag"></i> Rp 350.000
+                    </div>
+                    <p class="card-text">Lightweight tennis racket for competitive play...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        // Function untuk menghasilkan rating bintang dengan support half star
+        function generateStarRating(rating) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= Math.floor(rating)) {
+                    // Bintang penuh
+                    stars += '<i class="fas fa-star star"></i>';
+                } else if (i === Math.ceil(rating) && rating % 1 !== 0) {
+                    // Bintang setengah
+                    stars += '<i class="fas fa-star star half"></i>';
+                } else {
+                    // Bintang kosong
+                    stars += '<i class="fas fa-star star empty"></i>';
+                }
+            }
+            return stars;
+        }
+
+        // Function untuk menghasilkan rating random untuk setiap produk
+        function addRandomRatings() {
+            $('.product-card').each(function() {
+                // Generate rating random antara 4.0 - 5.0
+                const ratingValue = (Math.random() * 1.0 + 4.0); // 4.0 - 5.0
+                const ratingText = ratingValue.toFixed(1); // Format ke 1 desimal
+                const reviewCount = Math.floor(Math.random() * 200 + 50); // 50 - 250 reviews
+                
+                const starHtml = generateStarRating(ratingValue);
+                const ratingHtml = `
+                    <div class="product-rating">
+                        <div class="stars">${starHtml}</div>
+                        <span class="rating-text">${ratingText} (${reviewCount} reviews)</span>
+                    </div>
+                `;
+                
+                // Insert rating setelah price
+                $(this).find('.product-price').after(ratingHtml);
+                
+                // Store data untuk sorting
+                $(this).attr('data-rating', ratingValue.toFixed(1));
+                $(this).attr('data-reviews', reviewCount);
+                
+                // Extract price value
+                const priceText = $(this).find('.product-price').text();
+                const priceNumber = priceText.replace(/[^\d]/g, '');
+                $(this).attr('data-price', parseInt(priceNumber));
+                
+                // Extract product name
+                const productName = $(this).find('.card-title').text().toLowerCase().trim();
+                $(this).attr('data-name', productName);
+            });
+        }
+
+        // Function untuk mengurutkan produk berdasarkan pilihan
+        function sortProducts(criteria) {
+            const container = $('.product-grid');
+            const products = container.find('.product-card');
+
+            // Sort produk berdasarkan kriteria
+            products.sort(function(a, b) {
+                let valueA, valueB;
+
+                switch(criteria) {
+                    case 'name-asc':
+                        valueA = $(a).find('.card-title').text().toLowerCase();
+                        valueB = $(b).find('.card-title').text().toLowerCase();
+                        return valueA.localeCompare(valueB);
+                    case 'name-desc':
+                        valueA = $(a).find('.card-title').text().toLowerCase();
+                        valueB = $(b).find('.card-title').text().toLowerCase();
+                        return valueB.localeCompare(valueA);
+                    case 'price-asc':
+                        valueA = parseInt($(a).attr('data-price'));
+                        valueB = parseInt($(b).attr('data-price'));
+                        return valueA - valueB;
+                    case 'price-desc':
+                        valueA = parseInt($(a).attr('data-price'));
+                        valueB = parseInt($(b).attr('data-price'));
+                        return valueB - valueA;
+                    case 'rating-desc':
+                        valueA = parseFloat($(a).attr('data-rating'));
+                        valueB = parseFloat($(b).attr('data-rating'));
+                        return valueB - valueA;
+                    case 'rating-asc':
+                        valueA = parseFloat($(a).attr('data-rating'));
+                        valueB = parseFloat($(b).attr('data-rating'));
+                        return valueA - valueB;
+                    default:
+                        return 0;
+                }
+            });
+
+            // Append produk yang sudah diurutkan ke container
+            container.append(products);
+        }
+
+        // Jalankan setelah dokumen ready
+        $(document).ready(function() {
+            // Add ratings to all products
+            addRandomRatings();
+
+            // Event listener for sort select change
+            $('#sortSelect').on('change', function() {
+                const selectedValue = $(this).val();
+                sortProducts(selectedValue);
+                console.log('Sorted by:', selectedValue);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+DirectoryIndex index.php
+Options -Indexes
+
+# Enable URL rewriting
+RewriteEngine On
+
+# Admin directory handling
+RewriteRule ^admin/?$ admin/index.php [L]

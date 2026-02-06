@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Profile Images - Sportware</title>
+    <link rel="icon" href="img/sportware-logo.jpeg" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .test-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+        
+        .test-section h2 {
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+        
+        /* Test Navbar Profile Image */
+        .navbar-profile-test {
+            width: 40px;
+            height: 40px;
+            object-fit: cover !important;
+            border: 2px solid #ffc107;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-profile-test:hover {
+            transform: scale(1.05);
+            border-color: #fff3cd;
+        }
+        
+        /* Test Admin Profile Image */
+        .admin-profile-test {
+            width: 100px;
+            height: 100px;
+            object-fit: cover !important;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 10px auto;
+        }
+        
+        .admin-profile-test:hover {
+            transform: scale(1.05);
+            border-color: #0056b3;
+            box-shadow: 0 2px 8px rgba(0,123,255,0.3);
+        }
+        
+        /* Test ViewProfile Image */
+        .viewprofile-test {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #d4a574;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(212, 165, 116, 0.3);
+            display: block;
+            margin: 10px auto;
+        }
+        
+        .viewprofile-test:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 35px rgba(212, 165, 116, 0.4);
+        }
+        
+        .image-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .image-item {
+            text-align: center;
+        }
+        
+        .image-item h4 {
+            margin-top: 10px;
+            color: #555;
+        }
+        
+        .comparison {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+        
+        .before, .after {
+            width: 48%;
+            text-align: center;
+        }
+        
+        .before h3 {
+            color: #dc3545;
+        }
+        
+        .after h3 {
+            color: #28a745;
+        }
+        
+        .old-style {
+            width: 100px;
+            height: 100px;
+            /* Tanpa object-fit - akan gepeng jika aspect ratio tidak sama */
+        }
+        
+        .new-style {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid #28a745;
+        }
+        
+        .info-box {
+            background: #e7f3ff;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+            color: #155724;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🖼️ Test Profile Images - Sportware Application</h1>
+        
+        <div class="success-box">
+            <h3>✅ Perbaikan Selesai!</h3>
+            <p>Semua foto profile di aplikasi Sportware sudah diperbaiki menggunakan <code>object-fit: cover</code> untuk mengatasi masalah gambar gepeng/distorted.</p>
+        </div>
+
+        <div class="test-section">
+            <h2>1. Navbar User Profile Image (40x40px)</h2>
+            <div class="image-container">
+                <div class="image-item">
+                    <img src="img/profilePic.jpg" class="navbar-profile-test" alt="Navbar Profile">
+                    <h4>Navbar Profile</h4>
+                    <p>Circular, 40x40px</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>2. Admin User Management Table (100x100px)</h2>
+            <div class="image-container">
+                <div class="image-item">
+                    <img src="img/profilePic.jpg" class="admin-profile-test" alt="Admin Table Profile">
+                    <h4>Admin Table Profile</h4>
+                    <p>Rounded corners, 100x100px</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>3. View Profile Page (150x150px)</h2>
+            <div class="image-container">
+                <div class="image-item">
+                    <img src="img/profilePic.jpg" class="viewprofile-test" alt="View Profile">
+                    <h4>View Profile</h4>
+                    <p>Circular, 150x150px</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>4. Perbandingan: Sebelum vs Sesudah</h2>
+            <div class="comparison">
+                <div class="before">
+                    <h3>❌ Sebelum (Gepeng)</h3>
+                    <img src="img/profilePic.jpg" class="old-style" alt="Before">
+                    <p>Tanpa <code>object-fit: cover</code></p>
+                    <p>Gambar akan gepeng jika aspect ratio berbeda</p>
+                </div>
+                <div class="after">
+                    <h3>✅ Sesudah (Proporsional)</h3>
+                    <img src="img/profilePic.jpg" class="new-style" alt="After">
+                    <p>Dengan <code>object-fit: cover</code></p>
+                    <p>Gambar tetap proporsional, dipotong dengan baik</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>📝 Catatan Teknis:</h3>
+            <ul>
+                <li><strong>object-fit: cover</strong> - Memastikan gambar memenuhi container tanpa distorsi</li>
+                <li><strong>Border & Hover Effects</strong> - Menambah visual feedback yang menarik</li>
+                <li><strong>Cache Busting</strong> - Memastikan gambar ter-update langsung tanpa cache</li>
+                <li><strong>Responsive Design</strong> - Gambar tetap terlihat baik di berbagai ukuran layar</li>
+                <li><strong>Fallback Image</strong> - Ada gambar default jika profile picture tidak ditemukan</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h2>5. File Yang Telah Diperbaiki:</h2>
+            <ul style="line-height: 1.8;">
+                <li>✅ <code>partials/_nav.php</code> - Navbar user profile image</li>
+                <li>✅ <code>admin/userManage.php</code> - Admin table profile images</li>
+                <li>✅ <code>viewProfile.php</code> - Profile page main image (sudah baik sebelumnya)</li>
+            </ul>
+        </div>
+
+        <div class="success-box">
+            <h3>🎉 Status: Semua Perbaikan Selesai!</h3>
+            <p>Foto profile di aplikasi Sportware sekarang tidak akan lagi terlihat gepeng atau distorted, terlepas dari aspect ratio gambar aslinya.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Button Behavior Test</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <style>
+        body {
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .comparison-table {
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Login Button Behavior Test</h1>
+        
+        <div class="test-section">
+            <h3>Expected Behavior Comparison</h3>
+            <table class="table table-bordered comparison-table">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Page</th>
+                        <th>When Logged In</th>
+                        <th>When NOT Logged In</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>about.php</strong><br><small>(Original Reference)</small></td>
+                        <td>
+                            <span class="badge badge-success">✓ Add to Cart</span><br>
+                            <span class="badge badge-danger">✓ Add to Wishlist</span><br>
+                            <span class="badge badge-warning">✓ Quick View</span>
+                        </td>
+                        <td>
+                            <span class="badge badge-light">✗ No Add to Cart</span><br>
+                            <span class="badge badge-light">✗ No Add to Wishlist</span><br>
+                            <span class="badge badge-warning">✓ Quick View</span>
+                        </td>
+                        <td><span class="badge badge-info">Reference</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>search.php</strong><br><small>(Updated to Match)</small></td>
+                        <td>
+                            <span class="badge badge-success">✓ Add to Cart</span><br>
+                            <span class="badge badge-danger">✓ Add to Wishlist</span><br>
+                            <span class="badge badge-warning">✓ Quick View</span>
+                        </td>
+                        <td>
+                            <span class="badge badge-light">✗ No Add to Cart</span><br>
+                            <span class="badge badge-light">✗ No Add to Wishlist</span><br>
+                            <span class="badge badge-warning">✓ Quick View</span>
+                        </td>
+                        <td><span class="badge badge-success">Fixed</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="test-section">
+            <h3>Testing Instructions</h3>
+            <div class="alert alert-info">
+                <h5>Step 1: Test When NOT Logged In</h5>
+                <ol>
+                    <li>Make sure you are logged out</li>
+                    <li>Visit <a href="about.php" target="_blank">about.php</a> - Should only show "Quick View" buttons</li>
+                    <li>Visit <a href="search.php?search=pizza" target="_blank">search.php?search=pizza</a> - Should only show "Quick View" buttons</li>
+                    <li>Both pages should have identical button behavior</li>
+                </ol>
+            </div>
+            
+            <div class="alert alert-warning">
+                <h5>Step 2: Test When Logged In</h5>
+                <ol>
+                    <li>Log in to your account</li>
+                    <li>Visit <a href="about.php" target="_blank">about.php</a> - Should show all three buttons</li>
+                    <li>Visit <a href="search.php?search=pizza" target="_blank">search.php?search=pizza</a> - Should show all three buttons</li>
+                    <li>Both pages should have identical button behavior</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>Quick Test Links</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5><i class="fas fa-info-circle"></i> About.php (Reference)</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-muted">Original behavior - only shows buttons when logged in</p>
+                            <a href="about.php" class="btn btn-primary btn-block" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Open about.php
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5><i class="fas fa-search"></i> Search.php (Updated)</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-muted">Updated to match about.php behavior</p>
+                            <a href="search.php?search=pizza" class="btn btn-success btn-block" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Search for "pizza"
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>Test Different Search Terms</h3>
+            <div class="d-flex flex-wrap">
+                <a href="search.php?search=pizza" class="btn btn-outline-primary btn-sm mr-2 mb-2" target="_blank">pizza</a>
+                <a href="search.php?search=chicken" class="btn btn-outline-primary btn-sm mr-2 mb-2" target="_blank">chicken</a>
+                <a href="search.php?search=veg" class="btn btn-outline-primary btn-sm mr-2 mb-2" target="_blank">veg</a>
+                <a href="search.php?search=cheese" class="btn btn-outline-primary btn-sm mr-2 mb-2" target="_blank">cheese</a>
+                <a href="search.php?search=burger" class="btn btn-outline-primary btn-sm mr-2 mb-2" target="_blank">burger</a>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>What to Verify</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="text-danger">When NOT Logged In:</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-times text-danger"></i> No "Add to Cart" button</li>
+                        <li><i class="fas fa-times text-danger"></i> No "Add to Wishlist" button</li>
+                        <li><i class="fas fa-check text-success"></i> Only "Quick View" button visible</li>
+                        <li><i class="fas fa-check text-success"></i> Consistent across both pages</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="text-success">When Logged In:</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check text-success"></i> "Add to Cart" button visible</li>
+                        <li><i class="fas fa-check text-success"></i> "Add to Wishlist" button visible</li>
+                        <li><i class="fas fa-check text-success"></i> "Quick View" button visible</li>
+                        <li><i class="fas fa-check text-success"></i> All buttons functional</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>Login Status</h3>
+            <div class="alert alert-secondary">
+                <p><strong>Current Status:</strong> 
+                    <?php
+                    session_start();
+                    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+                        echo '<span class="badge badge-success">Logged In</span> as ' . ($_SESSION['username'] ?? 'Unknown');
+                        echo '<br><a href="partials/_logout.php" class="btn btn-sm btn-warning mt-2">Logout to Test</a>';
+                    } else {
+                        echo '<span class="badge badge-warning">Not Logged In</span>';
+                        echo '<br><button class="btn btn-sm btn-primary mt-2" data-toggle="modal" data-target="#loginModal">Login to Test</button>';
+                    }
+                    ?>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
